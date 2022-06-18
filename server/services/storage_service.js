@@ -1,4 +1,4 @@
-const { Player } = require("../db/models");
+const { Player, Salary } = require('../db/models');
 
 class StorageService {
   getPlayers = (player_id) => Player.findAll();
@@ -20,6 +20,7 @@ class StorageService {
 
   createSalary = async (salary) => {
     //TODO 4: Use Salary sequelize model to create a salary
+    await Salary.create({ "start_date":salary.start_date,"end_date":salary.end_date,"amount":salary.amount,"player_id":salary.player_id});
   };
 
   getSalary = async (salary_id) => {
